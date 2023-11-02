@@ -23,3 +23,14 @@ class PrepareBaseModelConfig:
     updated_base_model_path : Path  
     params_image_size       : list
     params_learning_rate    : float
+
+
+@dataclass(frozen=True)
+class PreprocessingConfig:
+
+    train_data_path : Path
+    test_data_path  : Path
+    val_data_path   : Path
+    image_size      : list
+    buffer_size     : int
+    batch_size      : int

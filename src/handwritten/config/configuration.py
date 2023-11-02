@@ -9,7 +9,8 @@ from src.handwritten.utils.common import (read_yaml,
 
 from src.handwritten.constants import *
 from src.handwritten.entity.config_entity import (DataIngestionConfig,
-                                                  PrepareBaseModelConfig)
+                                                  PrepareBaseModelConfig,
+                                                  PreprocessingConfig)
 
 
 
@@ -50,6 +51,17 @@ class ConfugarationManager:
                 
         return prepare_base_model_Config
 
+
+    def get_data_processing_config(self) -> PreprocessingConfig:
+        config_                     = self.config_.data_ingestion
+        self.data_processing_config = PreprocessingConfig(
+            train_data_path = Path(config_.train_data_path),
+            test_data_path  = Path(config_.test_data_path), 
+            val_data_path   = Path(config_.val_data_path),
+            image_size      = list(self.params_.IMAGE_SIZE),
+            buffer_size     = int(self.params_.BUFFER_SIZE),
+            batch_size      = int(self.params_.BATCH_SIZE))
+        return self.data_processing_config
 
 if __name__ == "__main__":
     obj = ConfugarationManager()

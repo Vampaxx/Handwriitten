@@ -26,6 +26,7 @@ class PrepareBaseModel:
 
             #load the model
             self.loaded_model = load_model(self.config.base_model_path)
+            
             logging.info('compiling started')
             self.loaded_model.compile(optimizer='adam',
                                     metrics=['accuracy'],
