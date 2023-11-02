@@ -8,7 +8,8 @@ from src.handwritten.utils.common import (read_yaml,
                                           create_directories)
 
 from src.handwritten.constants import *
-from src.handwritten.entity.config_entity import DataIngestionConfig
+from src.handwritten.entity.config_entity import (DataIngestionConfig,
+                                                  PrepareBaseModelConfig)
 
 
 
@@ -35,6 +36,19 @@ class ConfugarationManager:
             raw_data_path   = Path(config_.raw_data_path),)
             
         return self.data_ingestion_config
+    
+    def get_prepare_base_model_config(self) -> PrepareBaseModelConfig:
+
+        config_ = self.config_.prepare_base_model 
+        create_directories([config_.root_dir])
+        prepare_base_model_Config   = PrepareBaseModelConfig(
+            root_dir                = Path (config_.root_dir),
+            base_model_path         = Path (config_.base_model_path), 
+            updated_base_model_path = Path (config_.updated_base_model_path),
+            params_image_size       = list (self.params_.IMAGE_SIZE),
+            params_learning_rate    = float(self.params_.LEARNING_RATE))
+                
+        return prepare_base_model_Config
 
 
 if __name__ == "__main__":

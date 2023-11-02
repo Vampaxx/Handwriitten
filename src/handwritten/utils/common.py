@@ -30,3 +30,6 @@ def create_directories(path_to_directories: list, verbose=True):
         os.makedirs(path, exist_ok=True)
         if verbose:
             logging.info(f"created directory at: {path}")
+
+def save_model(path: Path, model):
+    model.save(path)
