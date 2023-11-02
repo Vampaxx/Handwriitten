@@ -6,7 +6,7 @@ import tensorflow as tf
 from src.handwritten.exception import CustomException
 from src.handwritten.logger import logging
 from src.handwritten.utils.data_processing import preprocessing
-from src.handwritten.config.configuration import ConfugarationManager
+#from src.handwritten.config.configuration import ConfugarationManager
 from src.handwritten.entity.config_entity import PreprocessingConfig
 
 
